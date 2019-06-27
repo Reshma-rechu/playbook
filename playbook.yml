@@ -1,18 +1,8 @@
 ---
 -
   hosts: localhost
-  become: yes
-  become_user: root
-  become_method: sudo
   tasks:
-    -
-      file:
-        path: "/home/ubuntu/reshma/{{ ansible_hostname }}.txt"
-        state: touch
-      name: "Ansible create file if it doesn't exist example"
-    -
-      name: Adding content to EOF
-      lineinfile:
-        dest: "/home/ubuntu/reshma/{{ ansible_hostname }}.txt"
-        line: "Log file!!"
-        insertafter: EOF
+   - name: Sample playbook
+     debug:
+       msg: "Playbook executed"
+    
