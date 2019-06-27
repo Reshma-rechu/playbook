@@ -1,6 +1,9 @@
 ---
 -
   hosts: localhost
+  become: yes
+  become_user: root
+  become_method: sudo
   tasks:
     - name: "Ansible create file if it doesn't exist example"
       file:
