@@ -7,8 +7,7 @@ node{
      
   stage ('Run a check for playbook')
      sh '[ -f /var/lib/jenkins/workspace/playbook_task/playbook.yml ] && echo "Found" || echo "Not found"'
-     
-  ansiblePlaybook( 
-        playbook: '/var/lib/jenkins/workspace/playbook_task/playbook.yml',
-     )
- }
+  
+  stage ('Executing playbook')
+     sh 'ansible-playbook playbook.yml'
+}
