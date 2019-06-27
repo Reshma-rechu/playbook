@@ -10,7 +10,4 @@ node{
   
       stage ('Executing playbook')
         sh 'ansible-playbook playbook.yml'
-      
-      stage ('Build state')
-        echo "BUILD RESULT: ${currentBuild.currentResult}"
 } 
