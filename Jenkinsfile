@@ -16,7 +16,7 @@ node {
 	                }
 	       
 	              stage 'Execute playbook'
-	                sh 'ansible-playbook playboo.yml'
+	                sh 'ansible-playbook playbook.yml'
 	              
 	              currentBuild.result = 'SUCCESS'
 	           }   catch (Exception err) {
