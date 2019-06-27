@@ -1,5 +1,4 @@
 node{
-   
 	stage ('Checkout')
 	  checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Reshma-rechu/playbook.git']]])
 	 
@@ -12,6 +11,6 @@ node{
 	stage ('Executing playbook')
 	  sh 'ansible-playbook playbook.yml'
 		  
-        currentBuild.result = 'SUCCESS'
- 	echo "RESULT: ${currentBuild.result}"	
+        stage ('Build status')
+	  sh 'echo "Build ${currentBuild.currentResult}"'
 } 
