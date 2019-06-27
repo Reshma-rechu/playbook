@@ -1,6 +1,6 @@
 node{
  try{
-   stage ('Checkout')
+  stage ('Checkout')
      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Reshma-rechu/playbook.git']]])
  
   stage ('syntax check')
@@ -13,9 +13,10 @@ node{
      sh 'ansible-playbook playbook.yml'
   
   currentBuild.result = 'SUCCESS'
+  
  	} catch (Exception err) {
  	currentBuild.result = 'FAILURE'
  	}
+ 
  	echo "BUILD RESULT: ${currentBuild.result}"
-  
 } 
