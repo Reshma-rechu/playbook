@@ -9,6 +9,6 @@
       
     - name: Adding content to EOF
       lineinfile:
-        dest: "/home/ubuntu/reshma/{{ ansible_hostname }}.txt"
+        dest: "/home/ubuntu/{{ ansible_hostname }}.txt"
         line: "Log file!!"
         insertafter: EOF
