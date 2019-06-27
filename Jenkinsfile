@@ -1,5 +1,5 @@
 node{
- 
+ try{
    stage ('Checkout')
      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Reshma-rechu/playbook.git']]])
  
@@ -10,9 +10,12 @@ node{
      sh '[ -f /var/lib/jenkins/workspace/playbook_task/playbook.yml ] && echo "Found" || echo "Not found"'
   
   stage ('Executing playbook')
-     sh 'ansible-playbook playboo.yml'
+     sh 'ansible-playbook playbook.yml'
+  
+  currentBuild.result = 'SUCCESS'
+ 	} catch (Exception err) {
+ 	currentBuild.result = 'FAILURE'
+ 	}
+ 	echo "BUILD RESULT: ${currentBuild.result}"
+  
 } 
-node{
-  stage ('Build status')
-     sh 'echo "Build ${currentBuild.currentResult}"'
-}
