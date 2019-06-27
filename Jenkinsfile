@@ -13,7 +13,6 @@ node{
         sh 'ansible-playbook playbook.yml'
 
       currentBuild.currentResult = 'SUCCESS'
-
       } catch (Exception err) {
       currentBuild.currentResult = 'FAILURE'
       }
