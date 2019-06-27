@@ -13,7 +13,6 @@ node{
         sh 'ansible-playbook playbook.yml'
 
       echo "BUILD RESULT: ${currentBuild.result}"
-    
       } catch (Exception err) {
       echo "BUILD RESULT: ${currentBuild.result}"
       }
