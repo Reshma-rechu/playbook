@@ -1,17 +1,7 @@
 ---
 -
   hosts: localhost
-  become: yes
-  become_user: root
-  become_method: sudo
   tasks:
     - name: "Ansible create file if it doesn't exist example"
-      file:
-        path: "/home/ubuntu/{{ ansible_hostname }}.txt"
-        state: touch
-      
-    - name: Adding content to EOF
-      lineinfile:
-        dest: "/home/ubuntu/{{ ansible_hostname }}.txt"
-        line: "Log file!!"
-        insertafter: EOF
+      debug:
+        msg: "Playbook executed"
