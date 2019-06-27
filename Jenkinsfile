@@ -6,14 +6,8 @@ node {
 	              stage 'Syntax Check'
 	                sh 'ansible-playbook --syntax-check ./playbook.yml' 
 	       
-	              stage 'Check for playbook'
-	                if (fileExists('playbook.yml')) {
-	                  echo 'Playbook exists'
-	                } 
-	                else 
-	                {
-	                  echo 'Playbook doesnot exists'
-	                }
+	              stage ('Run a check for playbook')
+                        sh '[ -f /var/lib/jenkins/workspace/playbook_task/playbook.yml ] && echo "Found" || echo "Not found"'
 	       
 	              stage 'Execute playbook'
 	                sh 'ansible-playbook playbook.yml'
@@ -22,7 +16,7 @@ node {
 	           }   catch (Exception err) {
 	                currentBuild.result = 'FAILURE'
 	            }
-	              echo "BUILD RESULT: ${currentBuild.result}"       
+	              echo "BUILD : ${currentBuild.result}"       
 }
 
 
