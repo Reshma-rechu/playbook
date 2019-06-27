@@ -11,5 +11,5 @@ node{
       stage ('Executing playbook')
         sh 'ansible-playbook playbook.yml'
       
-      sh 'echo "BUILD RESULT: ${currentBuild.result}"
+      sh 'echo "BUILD RESULT: ${currentBuild.currentResult}"
 } 
